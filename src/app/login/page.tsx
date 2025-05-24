@@ -1,14 +1,29 @@
-import { login, signup } from '@/app/login/actions'
+import { login } from '@/app/login/actions'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import Link from 'next/link'
 
 export default function LoginPage() {
   return (
-    <form>
-      <label htmlFor="email">Email:</label>
-      <input id="email" name="email" type="email" required />
-      <label htmlFor="password">Password:</label>
-      <input id="password" name="password" type="password" required />
-      <button formAction={login}>Log in</button>
-      <button formAction={signup}>Sign up</button>
-    </form>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
+        <h1 className="text-2xl font-bold text-center">Login</h1>
+        <form className="space-y-4">
+          <div>
+            <Label htmlFor="email">Email:</Label>
+            <Input id="email" name="email" type="email" required />
+          </div>
+          <div>
+            <Label htmlFor="password">Password:</Label>
+            <Input id="password" name="password" type="password" required />
+          </div>
+          <Button formAction={login} className="w-full">Log in</Button>
+        </form>
+        <p className="text-center">
+          Don't have an account? <Link href="/signup" className="text-blue-500">Sign up</Link>
+        </p>
+      </div>
+    </div>
   )
 }
